@@ -16,7 +16,6 @@ class Icd10Spider(scrapy.Spider):
     all_pages = pages['pages']
     all_pages.drop_duplicates(keep=False, inplace=True)
     page_links = list(all_pages)
-    print(page_links)
 
     index = 0
     start_urls = [ base_url + page_links[index]]
@@ -38,11 +37,14 @@ class Icd10Spider(scrapy.Spider):
         diagnosis = {
             'type': 'standard', 
             'code': icd10_code[0],
-            'diagnosis': icd10_diagnosis[0]
+            'diagnosis': icd10_diagnosis[0],
+            'url': response.url 
         }
 
         yield diagnosis
 
+
+        #approximate_synomyms
         if icd10_synonyms:
             sp = StringProcessor(icd10_synonyms)
             synonyms = sp.dup().clean_html().split().remove_whitespace()
@@ -52,7 +54,21 @@ class Icd10Spider(scrapy.Spider):
                 synonym_diagnosis['type'] = 'synonyms' 
                 synonym_diagnosis['code'] = icd10_code[0]
                 synonym_diagnosis['diagnosis'] = synonym
+                synonym_diagnosis['url'] = response.url 
                 yield synonym_diagnosis
+
+        #applicable to
+        if icd10_applicables:
+            sp = StringProcessor(icd10_applicables)
+            applicables = sp.dup().clean_html().split().remove_whitespace()
+
+            for applicable in applicables:
+                applicable_diagnosis = {}
+                applicable_diagnosis['type'] = 'applicable_to' 
+                applicable_diagnosis['code'] = icd10_code[0]
+                applicable_diagnosis['diagnosis'] = applicable 
+                applicable_diagnosis['url'] = response.url 
+                yield applicable_diagnosis
 
 
 
@@ -61,6 +77,10 @@ class Icd10Spider(scrapy.Spider):
             next_link = self.page_links[self.index]
             self.index += 1
             new_url = self.base_url + next_link
+
+            print('------URL------:' + response.url)
+            print('------counter------:'+ str(self.index) + ' / ' + str(len(self.page_links)))
+            
             yield scrapy.Request(url=new_url, callback=self.parse)
 
         
