@@ -24,8 +24,8 @@ HOST2 = conn['HOST']
 nodes = [HOST1, HOST2]
 
 es = Elasticsearch( 
-    #['165.22.110.167'],
-    ['localhost'],
+    ['165.22.110.167'],
+    #['localhost'],
     http_auth = (conn['USERNAME'], conn['PASSWORD']),
     scheme = conn['SCHEME'],
     port = conn['PORT'],
