@@ -27,11 +27,13 @@ class Icd10Spider(scrapy.Spider):
     index = 79312
     #start_urls = [ base_url + page_links[index]]
     #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00'] # with synyms
-    start_urls = ['https://www.icd10data.com/ICD10CM/Codes/A00-B99/A00-A09/A06-/A06.0'] #without synyms but applicable to
+    start_urls = ['https://www.icd10data.com/ICD10CM/Codes/C00-D49/C60-C63/C61-/C61'] #with synonums --> Prostate
+    #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/A00-B99/A00-A09/A06-/A06.0'] #without synyms but applicable to
 
     custom_settings = {
         'FEED_FORMAT': 'json',
-        'FEED_URI': f"./dataset/{name}.%(time)s.json"
+        #'FEED_URI': f"./dataset/{name}.%(time)s.json"
+        'FEED_URI': f"./dataset/sample-data.json"
     }
 
 
@@ -45,7 +47,7 @@ class Icd10Spider(scrapy.Spider):
 
         icd10_code = response.css('span.identifierDetail::text').extract_first(),
         icd10_diagnosis = response.css('h2.codeDescription::text').extract_first(),
-        icd10_synonyms = response.xpath('//span[contains(text(),"Approximate Synonyms")]/following-sibling::ul').get()
+        icd10_synonyms = response.xpath('//span[contains(text(),"Approximate Synonyms")]/following-sibling::ul').get().strip()
         icd10_applicables = response.xpath('//span[contains(text(),"Applicable To")]/following-sibling::ul').get()
         print('-----icd_applicable----',icd10_applicables)
         print('-----icd_synonyms-----',icd10_synonyms)
@@ -66,7 +68,8 @@ class Icd10Spider(scrapy.Spider):
                 yield applicable_diagnosis
 
         #approximate_synomyms
-        elif icd10_synonyms:
+        if icd10_synonyms:
+            print('--------parse----',icd10_synonyms)
             sp_synonyms = StringProcessor(icd10_synonyms)
             synonyms = sp_synonyms.dup().clean_html().split().remove_whitespace()
             print('-----SYNONYMS----',synonyms)

@@ -1,33 +1,4 @@
 icd10_mapping = {
-    "settings": {
-        "analysis": {
-            "analyzer": {
-                "autocomplete": {
-                    "tokenizer": "autocomplete",
-                    "filter": [
-                        "lowercase"
-                        ]
-                },
-                "autocomplete_search": {
-                    "tokenizer": "lowercase"
-                }
-            },
-            "tokenizer": {
-                "autocomplete": {
-                    "type": "edge_ngram",
-                    "min_gram": 3,
-                    "max_gram": 10,
-                    "token_chars": [
-                        "letter" ,
-                        "whitespace",
-                        "punctuation",
-                        "symbol",
-                        "digit"
-                    ]
-                }
-            }
-        }
-    },
     "mappings": {
         "properties": {
             "type": {
@@ -72,5 +43,37 @@ icd10_mapping = {
             }
         }
     },
-
+    "settings": {
+        "index": {
+            "number_of_shards": 2,
+            "number_of_replicas": 1
+        },
+        "analysis": {
+            "analyzer": {
+                "autocomplete": {
+                    "tokenizer": "autocomplete",
+                    "filter": [
+                        "lowercase"
+                        ]
+                },
+                "autocomplete_search": {
+                    "tokenizer": "lowercase"
+                }
+            },
+            "tokenizer": {
+                "autocomplete": {
+                    "type": "edge_ngram",
+                    "min_gram": 3,
+                    "max_gram": 10,
+                    "token_chars": [
+                        "letter" ,
+                        "whitespace",
+                        "punctuation",
+                        "symbol",
+                        "digit"
+                    ]
+                }
+            }
+        }
+    }
 }

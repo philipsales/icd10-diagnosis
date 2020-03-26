@@ -24,7 +24,8 @@ HOST2 = conn['HOST']
 nodes = [HOST1, HOST2]
 
 es = Elasticsearch( 
-    nodes,
+    #['165.22.110.167'],
+    ['localhost'],
     http_auth = (conn['USERNAME'], conn['PASSWORD']),
     scheme = conn['SCHEME'],
     port = conn['PORT'],
@@ -68,45 +69,53 @@ def set_json_dump():
     print(bulk_data)
     """
     
+
     #_bulk_dump(bulk_data)
-def decode_nginx_log():
-    _data = [
+def test():
+    #with open('dataset/data.json') as json_file:
+        #_data = json.load(json_file)
+    data = [
         {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Cancer metastatic to lung"},
         {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Cancer metastatic to lung undifferentiated lg cell"},
         {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Cancer metastatic to lung, adenocarcinoma"},
         {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Cancer metastatic to lung, small cell"},
         {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Cancer metastatic to lung, squamous cell"},
         {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Cancer of the thyroid, with metastasis to lungs"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Melanoma eye, metastatic to lung"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Melanoma eye, metastatic to pancreas"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Melanoma, metastatic to lung"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Metastasis to lung from adenocarcinoma"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary adenocarcinoma of lung"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary malignant melanoma of lung"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary malignant melanoma of lung from eye"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary malignant melanoma of pancreas from eye"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary malignant neoplasm of lung"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary malignant neoplasm of lungs from thyroid"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary small cell cancer of lung"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary squamous cell carcinoma of lung"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Secondary undifferentiated large cell malignant neoplasm of lung"},
-        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Cancer metastatic to lung"}
+        {"type": "synonyms", "code": "C78.00", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00", "diagnosis": "Melanoma eye, metastatic to lung"}
     ]
 
-    for item in _data:
-        _idx = uuid.uuid4() 
-        yield _idx, item 
 
-def es_add_bulk():
+def generate_diagnosis():
 
-    k = ({
-            "_index": "2021-icd-10-cm",
-            "_type" : "icd10",
-            "_id"   : idx,
-            "_source": item,
-         } for idx, item in decode_nginx_log())
+    try:
+        with open('dataset/data-170478.json') as json_file:
+        #with open('dataset/prostate-data.json') as json_file:
+        #with open('dataset/sample-data.json') as json_file:
+            #icd10_diagnoses = json.load(json_file)
+            for diagnosis in json.load(json_file):
+                _es_id = uuid.uuid4() 
+                logger.info(_es_id)
+                yield _es_id, diagnosis 
 
-    helpers.bulk(es, k)
+    except Exception as err:
+        logger.error(err)
+
+    '''
+    for diagnosis in icd10_diagnoses:
+        _es_id = uuid.uuid4() 
+        yield _es_id, diagnosis 
+    '''
+
+def es_bulk_insert():
+
+    item = ({
+            "_index": '2020-icd10-cm', 
+            #"_index": '2020-icd10-cm.1.bak', 
+            "_id"   : es_id,
+            "_source": diagnosis,
+         } for es_id, diagnosis in generate_diagnosis())
+
+    helpers.bulk(es, item)
 
 def _bulk_insert():
     actions = [
@@ -134,14 +143,18 @@ def _bulk_dump(bulk_data):
 def _create_mappings():
     mapping = icd10_diagnosis.icd10_mapping
 
-    body = json.dumps(mapping)
-    main_index = '2022-icd10-cm' 
+    #body = '{ "mappings": ' + json.dumps(mapping) + ' }'
+    body =  json.dumps(mapping) 
+    #main_index = '2020-icd10-cm.3.bak' 
+    main_index = '2020-icd10-cm' 
 
     if es.indices.exists(main_index):
         logger.debug("INDEX exists")
     else:
         try: 
             res = es.indices.create(index = main_index, body = body )
+            #res = es.indices.put_mapping(index = main_index, body = body )
+            #res = es.index(index = main_index, body = body )
             logger.info(res)
 
             if res["acknowledged"] != True:
@@ -153,9 +166,11 @@ def _create_mappings():
             logger.error(err)
 
 def main():
-    #_create_mappings()
     #_bulk_insert()
-    es_add_bulk()
+    #es_bulk_insert()
+    #test()
+    _create_mappings()
+    es_bulk_insert()
     #set_json_dump() 
 
 

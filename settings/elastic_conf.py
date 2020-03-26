@@ -1,4 +1,5 @@
 
+#ElasticSearchENV = "development"
 ElasticSearchENV = "local"
 
 ElasticSearchConfig = {
@@ -15,12 +16,12 @@ ElasticSearchConfig = {
     'development': {
         'USERNAME': '',
         'PASSWORD': '',
-        'INDEX': 'philippines',
-        'TYPE': 'patients',
-        'SCHEME': 'https',
-        'HOST': 'elk.curis.online',
+        'INDEX': '2019-icd-10-cm',
+        'TYPE': '_doc',
+        'SCHEME': 'http',
+        'HOST': 'http://159.89.198.132',
         'PORT': 9200,
-        'TIMEOUT': 360
+        'TIMEOUT': 3600
     },
     'production': {
         'USERNAME': 'elastic',
@@ -28,7 +29,7 @@ ElasticSearchConfig = {
         'INDEX': 'philippines',
         'TYPE': 'patients',
         'SCHEME': 'HTTP',
-        'HOST': 'localhost',
+        'HOST': 'http://165.22.110.167',
         'PORT': 9200,
         'TIMEOUT': 360
     }
