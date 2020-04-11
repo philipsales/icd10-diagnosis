@@ -21,24 +21,26 @@ class Icd10Spider(scrapy.Spider):
     all_pages = pages['pages']
     page_links = list(all_pages)
 
-    #index = 0
+    index = 0
     #index = 9937
     #index = 78513
-    index = 79312
+    #index = 79312
     #start_urls = [ base_url + page_links[index]]
     #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/C00-D49/C76-C80/C78-/C78.00'] # with synyms
-    start_urls = ['https://www.icd10data.com/ICD10CM/Codes/C00-D49/C60-C63/C61-/C61'] #with synonums --> Prostate
+    #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/C00-D49/C60-C63/C61-/C61'] #with synonums --> Prostate
     #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/A00-B99/A00-A09/A06-/A06.0'] #without synyms but applicable to
+    #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/C00-D49/C73-C75/C73-/C73'] #with synonums --> Prostate
+    start_urls = ['https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10'] #hypertensino
 
     custom_settings = {
         'FEED_FORMAT': 'json',
         #'FEED_URI': f"./dataset/{name}.%(time)s.json"
-        'FEED_URI': f"./dataset/sample-data.json"
+        'FEED_URI': f"./dataset/missing-requested-data.json"
     }
-
-
+    
 
     def parse(self, response):
+        print(response.url)
         self.log('Url: ' + response.url)
 
         icd10_code = ''

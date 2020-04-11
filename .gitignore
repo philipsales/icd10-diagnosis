@@ -139,3 +139,9 @@ dmypy.json
 .*~
 *.py~
 *.py.swp
+
+# Mac
+.DS_Store
+
+# Project
+dataset/new_index/*
