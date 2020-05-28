@@ -30,7 +30,8 @@ class Icd10Spider(scrapy.Spider):
     #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/C00-D49/C60-C63/C61-/C61'] #with synonums --> Prostate
     #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/A00-B99/A00-A09/A06-/A06.0'] #without synyms but applicable to
     #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/C00-D49/C73-C75/C73-/C73'] #with synonums --> Prostate
-    start_urls = ['https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10'] #hypertensino
+    #start_urls = ['https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10'] #hypertensino
+    start_urls = ['https://www.icd10data.com/ICD10CM/Codes/G00-G99/G20-G26/G20-/G20'] #parkinsons
 
     custom_settings = {
         'FEED_FORMAT': 'json',

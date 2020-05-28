@@ -1,0 +1,8 @@
+{ "index" : { "_index" : "icd10" } }
+{"full_text":"Cholera","code":"A00.9","type":"synonym"}
+{ "index" : { "_index" : "icd10" } }
+{"full_text":"Cholera","type":"synonym","code":"A00.9"}
+{ "index" : { "_index" : "icd10" } }
+{"full_text":"Cholera due to Vibrio cholerae 01, biovar eltor","code":"A00.1","type":"synonym"}
+{ "index" : { "_index" : "icd10" } }
+{"full_text":"Cholera caused by vibrio cholerae eltor biotype","type":"synonym","code":"A00.1"}

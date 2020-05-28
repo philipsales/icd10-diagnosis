@@ -1,25 +1,3 @@
 [
-{"type": "standard", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Essential (primary) hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Benign essential hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Benign essential hypertension (htn)"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Benign hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Bilateral hypertensive retinopathy"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Essential hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Essential hypertension (high blood pressure)"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Hypertension (high blood pressure)"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Hypertension, uncontrolled"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Hypertensive disorder"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Hypertensive emergency"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Hypertensive retinopathy, both eyes"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Hypertensive urgency"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Labile systemic arterial hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Left hypertensive retinopathy"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Left hypertensive retinopathy (eye condition)"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Malignant hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Nutritional therapy for hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Nutritional therapy for hypertension done"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Right hypertensive retinopathy"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "Uncontrolled hypertension"},
-{"type": "synonyms", "code": "I10", "url": "https://www.icd10data.com/ICD10CM/Codes/I00-I99/I10-I16/I10-/I10", "diagnosis": "White coat syndrome"}
-]
+{"type": "user-request", "code": "C34.90", "url": "https://www.icd10data.com/ICD10CM/Codes/C00-D49/C30-C39/C34-/C34.90", "diagnosis": "NSCLC"}
+]		
