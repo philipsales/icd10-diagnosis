@@ -25,9 +25,8 @@ nodes = [HOST1, HOST2]
 
 #PRODUCTION
 
-DATASET = 'dataset/missing-requested-data.json'
-ENVIRONMENT = 'dev' 
-
+DATASET = 'dataset/diagnosis/icd10-clinical_modification/missing-requested-data.json'
+ENVIRONMENT = 'test' 
 
 if ENVIRONMENT == 'prod':
     index_name = '2020-icd10-cm'
@@ -48,7 +47,7 @@ elif ENVIRONMENT == 'dev':
         http_auth = ('elastic', 'm3dch3ck@2020_elastic_p@$$'),
         scheme = 'https',
         timeout = int(conn['TIMEOUT']))
-else:
+elif ENVIRONMENT == 'test':
     index_name = 'test.2020-icd10-cm'
     es = Elasticsearch( 
         ['165.22.110.167'],
@@ -100,7 +99,7 @@ def _create_mappings():
             logger.error(err)
 
 def main():
-    #_create_mappings()
+    _create_mappings()
     es_bulk_insert()
 
 

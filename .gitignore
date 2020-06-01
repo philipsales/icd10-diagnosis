@@ -146,3 +146,4 @@ dmypy.json
 
 # Project
 dataset/new_index/*
+dataset/*
